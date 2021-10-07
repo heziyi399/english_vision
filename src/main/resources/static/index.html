@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>群聊</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src = "/webjars/jquery/jquery.min.js"></script>
+    <script src = "/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src = "/app.js"></script>
+</head>
+<video width="600" height="400" align="center"  controls>
+<!--    <source th:src="@{'/upload/'+${path}}" type="video/mp4">-->
+    <source src="MyVideo.mp4" type="video/mp4">
+
+    您的浏览器不支持 HTML5 video 标签。
+</video>
+
+<body>
+<div>
+    <label for="name">用户名：</label>
+    <input type="text" id="name" placeholder="用户名">
+</div>
+<div>
+    <label for="title">标题：</label>
+    <input type="text" id="title" placeholder="标题">
+</div>
+<div>
+    <button id="connect" type="button">连接</button>
+    <button id="disconnect" type="button" disabled="disabled">断开</button>
+</div>
+<label for="name">请输入聊天内容：</label>
+<input type="text" id="content" placeholder="聊天内容">
+<button id="send" type="button">发送</button>
+<div id="greetings">
+    <div id="conversation" style="display: none">群聊中</div>
+</div>
+</body>
+</html>

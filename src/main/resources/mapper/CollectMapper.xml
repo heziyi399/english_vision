@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.english_vision.mapper.CollectMapper">
+  <resultMap id="BaseResultMap" type="com.english.english_vision.pojo.CollectWord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="stu_id" jdbcType="INTEGER" property="stuId" />
+    <result column="word_id" jdbcType="INTEGER" property="wordId" />
+    <result column="word_level" jdbcType="INTEGER" property="wordLevel" />
+    <result column="word_english" jdbcType="VARCHAR" property="wordEnglish" />
+    <result column="word_chinese" jdbcType="VARCHAR" property="wordChinese" />
+    <result column="word_use" jdbcType="VARCHAR" property="wordUse" />
+    <result column="stu_info" jdbcType="VARCHAR" property="stuInfo" />
+    <result column="master_boolean" jdbcType="INTEGER" property="masterBoolean" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stu_id, word_id, word_level, word_english, word_chinese, word_use, stu_info, 
+    master_boolean
+  </sql>
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_collect
+    where id = #{id,jdbcType=INTEGER}
+      and stu_id = #{stuId,jdbcType=INTEGER}
+  </select>
+  <select id="searchAllByStuId" resultType="com.english.english_vision.pojo.CollectWord">
+    select
+<include refid="Base_Column_List"></include>
+    from t_collect
+where stu_id = #{stuId}
+  </select>
+  <select id="selectByEng" resultType="com.english.english_vision.pojo.CollectWord">
+    select <include refid="Base_Column_List"></include>
+from t_collect where word_english=#{english}
+  </select>
+  <select id="selectByState" resultType="com.english.english_vision.pojo.CollectWord">
+    select <include refid="Base_Column_List"></include>
+from t_collect where master_boolean = #{masterBoolean}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.english.english_vision.pojo.CollectWord">
+    delete from t_collect
+    where id = #{id,jdbcType=INTEGER}
+      and stu_id = #{stuId,jdbcType=INTEGER}
+  </delete>
+  <delete id="dedeleteByEnglish">
+    delete * from t_collect
+where english = #{english}
+  </delete>
+  <insert id="insert" parameterType="com.english.english_vision.pojo.CollectWord">
+    insert into t_collect (id, stu_id, word_id, 
+      word_level, word_english, word_chinese, 
+      word_use, stu_info, master_boolean
+      )
+    values (#{id,jdbcType=INTEGER}, #{stuId,jdbcType=INTEGER}, #{wordId,jdbcType=INTEGER}, 
+      #{wordLevel,jdbcType=INTEGER}, #{wordEnglish,jdbcType=VARCHAR}, #{wordChinese,jdbcType=VARCHAR}, 
+      #{wordUse,jdbcType=VARCHAR}, #{stuInfo,jdbcType=VARCHAR}, #{masterBoolean,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.english.english_vision.pojo.CollectWord" useGeneratedKeys="true" keyProperty="id">
+    insert into t_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stuId != null">
+        stu_id,
+      </if>
+      <if test="wordId != null">
+        word_id,
+      </if>
+      <if test="wordLevel != null">
+        word_level,
+      </if>
+      <if test="wordEnglish != null">
+        word_english,
+      </if>
+      <if test="wordChinese != null">
+        word_chinese,
+      </if>
+      <if test="wordUse != null">
+        word_use,
+      </if>
+      <if test="stuInfo != null">
+        stu_info,
+      </if>
+      <if test="masterBoolean != null">
+        master_boolean,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stuId != null">
+        #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="wordId != null">
+        #{wordId,jdbcType=INTEGER},
+      </if>
+      <if test="wordLevel != null">
+        #{wordLevel,jdbcType=INTEGER},
+      </if>
+      <if test="wordEnglish != null">
+        #{wordEnglish,jdbcType=VARCHAR},
+      </if>
+      <if test="wordChinese != null">
+        #{wordChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="wordUse != null">
+        #{wordUse,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInfo != null">
+        #{stuInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="masterBoolean != null">
+        #{masterBoolean,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertByEnglish" useGeneratedKeys="true" keyProperty="id">
+
+
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.english.english_vision.pojo.CollectWord">
+    update t_collect
+    <set>
+      <if test="wordId != null">
+        word_id = #{wordId,jdbcType=INTEGER},
+      </if>
+      <if test="wordLevel != null">
+        word_level = #{wordLevel,jdbcType=INTEGER},
+      </if>
+      <if test="wordEnglish != null">
+        word_english = #{wordEnglish,jdbcType=VARCHAR},
+      </if>
+      <if test="wordChinese != null">
+        word_chinese = #{wordChinese,jdbcType=VARCHAR},
+      </if>
+      <if test="wordUse != null">
+        word_use = #{wordUse,jdbcType=VARCHAR},
+      </if>
+      <if test="stuInfo != null">
+        stu_info = #{stuInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="masterBoolean != null">
+        master_boolean = #{masterBoolean,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and stu_id = #{stuId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.english.english_vision.pojo.CollectWord">
+    update t_collect
+    set word_id = #{wordId,jdbcType=INTEGER},
+      word_level = #{wordLevel,jdbcType=INTEGER},
+      word_english = #{wordEnglish,jdbcType=VARCHAR},
+      word_chinese = #{wordChinese,jdbcType=VARCHAR},
+      word_use = #{wordUse,jdbcType=VARCHAR},
+      stu_info = #{stuInfo,jdbcType=VARCHAR},
+      master_boolean = #{masterBoolean,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+      and stu_id = #{stuId,jdbcType=INTEGER}
+  </update>
+</mapper>

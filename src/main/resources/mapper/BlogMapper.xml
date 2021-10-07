@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.english_vision.mapper.BlogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.english.english_vision.pojo.Blog">
+        <id column="id" property="id" />
+        <result column="appreciation" property="appreciation" />
+        <result column="commentabled" property="commentabled" />
+        <result column="content" property="content" />
+        <result column="create_time" property="createTime" />
+        <result column="description" property="description" />
+
+        <result column="published" property="published" />
+        <result column="recommend" property="recommend" />
+        <result column="share_statement" property="shareStatement" />
+        <result column="title" property="title" />
+        <result column="update_time" property="updateTime" />
+        <result column="views" property="views" />
+        <result column="user_id" property="userId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, appreciation, commentabled, content, create_time, description, published, recommend, share_statement, title, update_time, views, user_id
+    </sql>
+    <insert id="insertid">
+        insert into
+    </insert>
+    <select id="selectall" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog
+    </select>
+    <select id="selectBySum" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where type = #{type}
+    </select>
+    <select id="selectByQuestion" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where type = #{type}
+    </select>
+    <select id="selectById" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where id = #{id}
+    </select>
+    <select id="selectByUserId" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where user_id = #{id}
+    </select>
+    <select id="selectallDesc" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog order by create_time
+    </select>
+    <select id="selectBySumDesc" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where type =#{type}order by create_time
+
+    </select>
+    <select id="selectByQuestionDesc" resultType="com.english.english_vision.pojo.Blog">
+        select * from t_blog where type =#{type}order by create_time
+
+    </select>
+
+</mapper>

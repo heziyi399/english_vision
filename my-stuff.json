@@ -1,0 +1,3 @@
+[{"id":1,"english":"apple","chinese":"苹果","level":1,"frequency":3,"img":"http://localhost:8107/0.png","usa":"an apple"},
+  {"id":2,"english":"pear","chinese":"梨子","level":2,"frequency":2,"img":"http://localhost:8107/2.png","usa":"eat pear"},
+  {"id":3,"english":"car","chinese":"车","level":1,"frequency":3,"img":null,"usa":"cars(复数）buy car(买车）"},{"id":4,"english":"people","chinese":"人","level":1,"frequency":3,"img":null,"usa":"people(单复一样） we are people"}]

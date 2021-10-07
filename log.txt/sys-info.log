@@ -1,0 +1,21 @@
+12:59:11.143 [restartedMain] INFO  c.e.e.EnglishVisionApplication - [logStarting,55] - Starting EnglishVisionApplication using Java 1.8.0_271 on LAPTOP-94HDJ4OR with PID 22932 (C:\Users\14172\Desktop\xm\english_manage\target\classes started by 14172 in C:\Users\14172\Desktop\xm\english_manage)
+12:59:11.149 [restartedMain] INFO  c.e.e.EnglishVisionApplication - [logStartupProfileInfo,659] - No active profile set, falling back to default profiles: default
+12:59:14.506 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-8107"]
+12:59:14.506 [restartedMain] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+12:59:14.507 [restartedMain] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.52]
+12:59:14.590 [restartedMain] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+12:59:15.237 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+12:59:15.995 [restartedMain] INFO  c.z.h.HikariDataSource - [getConnection,110] - HikariPool-1 - Starting...
+12:59:18.924 [restartedMain] INFO  c.z.h.HikariDataSource - [getConnection,123] - HikariPool-1 - Start completed.
+12:59:19.127 [restartedMain] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-8107"]
+12:59:19.145 [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,147] - Context refreshed
+12:59:19.156 [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,150] - Found 1 custom documentation plugin(s)
+12:59:19.184 [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+12:59:19.354 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteBlogUsingDELETE_1
+12:59:19.371 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteBlogUsingDELETE_2
+12:59:19.407 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingPOST_1
+12:59:19.413 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: searchDiaryUsingPOST_1
+12:59:19.463 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteBlogUsingDELETE_3
+12:59:19.466 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingPOST_2
+12:59:19.476 [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_1
+12:59:19.495 [restartedMain] INFO  c.e.e.EnglishVisionApplication - [logStarted,61] - Started EnglishVisionApplication in 8.712 seconds (JVM running for 9.995)

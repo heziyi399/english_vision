@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.english_vision.mapper.ExamPaperMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.english.english_vision.pojo.ExamPaper">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="subject_id" property="subjectId" />
+        <result column="paper_type" property="paperType" />
+        <result column="grade_level" property="gradeLevel" />
+        <result column="score" property="score" />
+        <result column="question_count" property="questionCount" />
+        <result column="suggest_time" property="suggestTime" />
+        <result column="limit_start_time" property="limitStartTime" />
+        <result column="limit_end_time" property="limitEndTime" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, subject_id, paper_type, grade_level, score, question_count, suggest_time, limit_start_time, limit_end_time, deleted
+    </sql>
+    <select id="selectAll" resultType="com.english.english_vision.pojo.ExamPaper">
+        select <include refid="Base_Column_List"></include>
+from t_exam_paper
+    </select>
+    <select id="selectByLevel" resultType="com.english.english_vision.pojo.ExamPaper">
+        select * from t_exam_paper where level = #{level}
+    </select>
+    <select id="getbypid" resultType="java.lang.Integer">
+        SELECT question_id FROM t_exam_manage WHERE paper_id = #{id}
+    </select>
+
+</mapper>

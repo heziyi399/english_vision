@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.english.english_vision.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.english.english_vision.pojo.User">
+        <id column="id" property="id" />
+        <result column="user_uuid" property="userUuid" />
+        <result column="user_name" property="userName" />
+        <result column="password" property="password" />
+        <result column="real_name" property="realName" />
+        <result column="age" property="age" />
+        <result column="birth_day" property="birthDay" />
+        <result column="user_level" property="userLevel" />
+        <result column="phone" property="phone" />
+        <result column="role" property="role" />
+        <result column="status" property="status" />
+
+        <result column="create_time" property="createTime" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="deleted" property="deleted" />
+        <result column="total_words" property="totalWords" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+-- DATE_FORMAT(birth_day,'%Y-%m-%d')
+select
+        id, user_uuid, user_name, password, real_name, age, birth_day, user_level, phone, role, avatar,status,create_time, modify_time, deleted, total_words
+   from t_user
+</sql>
+
+    <insert id="insert" parameterType="com.english.english_vision.pojo.User" useGeneratedKeys="true"
+    keyProperty="id">
+        insert into t_user
+
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="id != null">
+            id,
+        </if>
+        <if test="userUuid != null">
+            user_uuid,
+        </if>
+
+<if test="userName!=null">user_name,</if>
+        <if test="password!=null">password,</if>
+        <if test="realName!=null">real_name,</if>
+        <if test="age!=null">age,</if>
+        <if test="birthDay!=null">birth_day,</if>
+        <if test="userLevel!=null">user_level,</if>
+        <if test="phone!=null">phone,</if>
+            <if test="role!=null">
+                `role`,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+
+            <if test="status!=null">status,</if>
+            <if test="createTime!=null"> create_time,</if>
+
+            <if test="modifyTime!=null">modify_time,</if>
+            <if test="deleted!=null">deleted,</if>
+            <if test="totalWords!=null">total_words</if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userUuid != null">
+                #{userUuid},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="age!= null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="birthDay!= null">
+                #{birthDay},
+            </if>
+            <if test="userLevel!= null">
+                #{userLevel},
+            </if>
+            <if test="phone!= null">
+                #{phone},
+            </if>
+            <if test="role!=null">
+                #{role},
+            </if>
+            <if test="role!=null">
+                #{avatar},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+
+            <if test="createTime!=null">#{createTime},</if>
+            <if test="modifyTime!=null">#{modifyTime},</if>
+            <if test="deleted!=null">#{deleted},</if>
+            <if test="totalWords!=null">#{totalWords}</if>
+
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.english.english_vision.pojo.User" >
+        update t_user
+<set>
+    <if test="userName!=null" >
+user_name = #{userName},
+    </if>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+    <if test="realName!=null">
+        real_name=#{realName},
+    </if>
+
+ <if test="age!=null">
+ age=#{age},
+ </if>
+
+   <if test="birthDay!=null">
+       birth_day=DATE_FORMAT(#{birthDay},'%Y-%m-%d'),
+   </if>
+
+    <if test="userLevel!=null">
+        user_level=#{userLevel},
+    </if>
+    <if test="phone!=null">
+        phone=#{phone}
+    </if>
+</set>
+where id=#{id}
+    </update>
+    <!--<select id="selectUserByLoginName" parameterType="String" resultMap="BaseResultMap" >-->
+<!--select-->
+<!--* from t_user-->
+<!--where t_user.user_name = #{userName} and t_user.password = #{password}-->
+<!--</select>-->
+    <select id="selectUserByLoginName" parameterType="String" resultMap="BaseResultMap" >
+       <include refid="Base_Column_List"/>
+        where t_user.user_name = #{userName} and t_user.password = #{password}
+    </select>
+    <select id="selectByName" resultType="com.english.english_vision.pojo.User">
+        select * from t_user where user_name=#{name}
+    </select>
+</mapper>
