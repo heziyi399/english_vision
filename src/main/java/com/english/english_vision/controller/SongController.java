@@ -19,7 +19,10 @@ import org.springframework.stereotype.Controller;
 @Api(tags = {"儿童英文歌曲操作接口"})
 public class SongController {
 
+  public void list()
+  {
 
+  }
 
 
 }
