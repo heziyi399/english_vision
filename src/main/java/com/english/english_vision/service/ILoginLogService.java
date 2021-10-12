@@ -1,7 +1,10 @@
 package com.english.english_vision.service;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.english.english_vision.pojo.LoginLog;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,7 +14,8 @@ import com.english.english_vision.pojo.LoginLog;
  * @author hehe
  * @since 2021-08-29
  */
-public interface ILoginLogService  {
+public interface ILoginLogService extends IService<LoginLog> {
     public int insert(LoginLog record);
     public int insertByFilter(LoginLog record);
+   List<LoginLog> selectAll();
 }

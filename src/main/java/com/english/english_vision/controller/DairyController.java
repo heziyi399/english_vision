@@ -89,7 +89,8 @@ Diary diary = new Diary();
     }
     @ApiOperation(value="编辑修改用户某一篇个人日记，仅本人可见,传的参数有 id title content type")
     @PostMapping("/dairy/update")
-    public ResponseResult updateDiary(@ApiParam(name="id",value="备忘录的id",required=true)@RequestParam("id")Integer id,DiaryVo diaryVo)
+    public ResponseResult updateDiary(@ApiParam(name="id",value="备忘录的id",required=true)
+                                          @RequestParam("id")Integer id,DiaryVo diaryVo)
     {
         Diary diary = diaryService.getById(id);
        diary.setContent(diaryVo.getContent());

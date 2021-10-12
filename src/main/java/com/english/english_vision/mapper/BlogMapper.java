@@ -29,7 +29,7 @@ List<Blog>selectall();
     Blog selectById(int id);
 
     List<Blog> selectByUserId(int id);
-    @Select("Select * from t_blog where user_id = #{id}")
+    @Select("Select * from t_blog where user_id = #{id} order by create_time")
     List<BlogVo> selectByUserID(Integer id);
     @Select("Select * from t_blog order by views desc")
     List<Blog> selectByView();

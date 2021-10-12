@@ -8,6 +8,10 @@ spring:
     restart:
       # 热部署开关
       enabled: true
+  redis:
+    host: 47.101.210.219
+    port: 6379
+
 myenglish:
   name: HappyEnglish
   profile: C:\Users\14172\AppData\Local

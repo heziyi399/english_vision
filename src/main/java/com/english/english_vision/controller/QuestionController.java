@@ -1,6 +1,7 @@
 package com.english.english_vision.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.english.english_vision.Base.ResponseResult;
 import com.english.english_vision.enums.ResponseEnum;
 import com.english.english_vision.pojo.Question;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
 import javax.crypto.interfaces.PBEKey;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -32,6 +34,7 @@ import java.util.Date;
 public class QuestionController {
 @Autowired
 private IQuestionService questionService;
+    //    给歌单添加歌曲
     @ApiOperation(value="管理员添加题")
     @PostMapping("/add")
     public ResponseResult addQuestion(@RequestBody Questionvo questionvo){

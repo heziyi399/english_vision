@@ -1,11 +1,14 @@
 package com.english.english_vision.service.impl;
 
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.english.english_vision.mapper.LoginLogMapper;
 import com.english.english_vision.pojo.LoginLog;
 import com.english.english_vision.service.ILoginLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,7 +19,7 @@ import org.springframework.stereotype.Service;
  * @since 2021-08-29
  */
 @Service
-public class LoginLogServiceImpl  implements ILoginLogService {
+public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper,LoginLog> implements ILoginLogService {
     @Autowired
     private LoginLogMapper loginLogMapper;
 
@@ -34,6 +37,11 @@ public class LoginLogServiceImpl  implements ILoginLogService {
         return 0;
     }
 
+    @Override
+    public List<LoginLog> selectAll() {
+        return loginLogMapper.selectAll();
+    }
+
 
     public LoginLog selectById(Integer id) {
         return null;
@@ -45,7 +53,5 @@ public class LoginLogServiceImpl  implements ILoginLogService {
     }
 
 
-    public int updateById(LoginLog record) {
-        return 0;
-    }
+
 }

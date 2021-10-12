@@ -52,7 +52,7 @@ private ApplicationEventPublisher publisher;
         }
         User user=userMapper.selectUserByLoginName(userName,password);
         publisher.publishEvent(new OnRegistrationCompleteEvent(user));
-        scheduledExecutorService().schedule( AsyncFactory.recordLogininfor(userName,"over","sussce"), OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
+        scheduledExecutorService().schedule( AsyncFactory.recordLogininfor(userName,"over","SUCCESS"), OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
         return userMapper.selectUserByLoginName(userName,password);
     }
 

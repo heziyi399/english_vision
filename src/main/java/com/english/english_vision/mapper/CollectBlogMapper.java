@@ -2,7 +2,11 @@ package com.english.english_vision.mapper;
 
 import com.english.english_vision.pojo.CollectBlog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.english.english_vision.pojo.CollectBlogDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface CollectBlogMapper extends BaseMapper<CollectBlog> {
 int addBlog(CollectBlog collectBlog);
+
+@Select("SELECT  blog_type,blog_id,count(*) as num FROM `t_collect_blog` GROUP BY blog_id ORDER BY count(*) DESC")
+    List<CollectBlogDTO> selectByMostCollect();
 }

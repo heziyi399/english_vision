@@ -27,6 +27,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry)
     {
    registry.addResourceHandler("/img/**")
     .addResourceLocations("file:C:\\Users\\14172\\Pictures\\");//file不能丢，否则访问不到
+        registry.addResourceHandler("/song/**").addResourceLocations("file:C:\\Users\\14172\\Desktop\\开发\\share\\data\\data\\song\\");
     }
 
 }

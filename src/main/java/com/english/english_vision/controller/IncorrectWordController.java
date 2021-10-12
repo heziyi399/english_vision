@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2021-09-05
  */
 @Controller
-@RequestMapping("/incorrect-word")
+@RequestMapping("/incorrectword")
 public class IncorrectWordController {
 
 }

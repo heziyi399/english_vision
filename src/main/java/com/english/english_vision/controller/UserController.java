@@ -96,7 +96,6 @@ public class UserController {
        if(!user.getPassword().matches(oldPassword))
 
             return ResponseResult.error("修改密码失败，旧密码错误");
-
         if (user.getPassword().matches(newPassword))
         {
             return ResponseResult.error("新密码不能与旧密码相同");
@@ -111,7 +110,6 @@ public class UserController {
     @ApiOperation(value="用户查看自己学习曲线，由渲染展示数据")
     @GetMapping("/usercondition")
     public ResponseResult graphic(){
-
         UserConditionVo conditionVo = new UserConditionVo();
         return ResponseResult.success(conditionVo);
     }

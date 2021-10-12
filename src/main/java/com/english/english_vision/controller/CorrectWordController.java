@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/correctword")
 public class CorrectWordController {
-    @ApiOperation(value="查看")
+    @ApiOperation(value="查看自己错过的单词")
     @PostMapping("/list")
 public void wordlist(){
 

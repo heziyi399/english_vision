@@ -37,7 +37,7 @@ import java.util.stream.Collectors;
  * @since 2021-08-29
  */
 @RestController
-@RequestMapping("/collect")
+@RequestMapping("/collectword")
 @Api(tags = {"单词收藏操作接口"})
 public class CollectController {
     @Autowired

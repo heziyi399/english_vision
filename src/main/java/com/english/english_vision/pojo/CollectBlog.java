@@ -38,4 +38,5 @@ public class CollectBlog implements Serializable {
     private Date createTime;
 
 
+
 }

@@ -73,6 +73,7 @@ public class AsyncFactory {
      * @param operLog 操作日志信息
      * @return 任务task
      */
+    //TimerTask.java：主要为任务的具体内容。
     public static TimerTask recordOper(final LoginLog operLog)
     {
         return new TimerTask() {
@@ -104,7 +105,7 @@ public class AsyncFactory {
             @Override
             public void run()
             {
-                System.out.println("记录登录");
+                System.out.println("TimerTask记录登录");
                 String address = ip;
                 StringBuilder s = new StringBuilder();
                 s.append(ip);

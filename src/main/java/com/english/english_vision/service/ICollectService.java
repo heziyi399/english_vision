@@ -2,6 +2,7 @@ package com.english.english_vision.service;
 
 
 import com.english.english_vision.Base.ResponseResult;
+import com.english.english_vision.pojo.CollectBlog;
 import com.english.english_vision.pojo.CollectWord;
 import com.github.pagehelper.PageInfo;
 
@@ -29,4 +30,6 @@ ResponseResult<Integer>insertSelective(String english);
     List<CollectWord> selectByState(int masterBoolean);
 
     void deleteByEnglish(String english);
+
+
 }

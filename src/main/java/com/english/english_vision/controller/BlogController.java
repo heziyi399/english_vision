@@ -4,11 +4,10 @@ package com.english.english_vision.controller;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.english.english_vision.Base.ResponseResult;
 import com.english.english_vision.enums.ResponseEnum;
-import com.english.english_vision.pojo.Blog;
-import com.english.english_vision.pojo.Comment;
-import com.english.english_vision.pojo.User;
-import com.english.english_vision.pojo.Word;
+import com.english.english_vision.pojo.*;
 import com.english.english_vision.service.IBlogService;
+import com.english.english_vision.service.ICollectBlogService;
+import com.english.english_vision.service.ICollectService;
 import com.english.english_vision.service.impl.BlogService2Impl;
 import com.english.english_vision.service.impl.CommentServiceImpl;
 import com.english.english_vision.vo.BlogVo;
@@ -40,8 +39,10 @@ import java.util.stream.Collectors;
 @RequestMapping("/blog")
 public class BlogController {
 @Autowired
-IBlogService service2;
+private IBlogService service2;
 
+@Autowired
+private ICollectBlogService collectService;
     @Autowired
     private CommentServiceImpl commentService;
     @ApiOperation(value="发布帖子")
@@ -229,4 +230,21 @@ comment.setAvatar(user.getAvatar());
   return ResponseResult.success(pageInfo);
     }
 
+    @ApiOperation(value="用户查看系统被收藏最多的的帖子列表（从高到底排序）")
+    //已经测试v 10.8日
+    @PostMapping("/mostCollectBlog")
+    public ResponseResult<PageInfo> selectByMostCollect(@ApiParam(name="pageNum",value="当前页",required=true)@RequestParam("pageNum")Integer pageNum,
+                                                 @ApiParam(name="pageSize",value="每页的记录条数",required=true)Integer pageSize)
+    {
+        List<Blog> collectBlogs = collectService.selectByMostCollect();
+        List<BlogVo>blogVos = collectBlogs.stream().map(e->{
+            BlogVo blogVo = new BlogVo();
+            BeanUtils.copyProperties(e,blogVo);
+            return blogVo;}).collect(Collectors.toList());
+        PageInfo pageInfo = new PageInfo(blogVos);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setPageNum(pageNum);
+        pageInfo.setList(blogVos);
+        return ResponseResult.success(pageInfo);
+    }
 }

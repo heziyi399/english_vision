@@ -141,7 +141,7 @@ public class LogAspect
             System.out.println("报存："+operLog.toString());
            loginLogMapper.insertSelective(operLog);
       scheduledExecutorService().schedule( AsyncFactory.recordOper(operLog), OPERATE_DELAY_TIME, TimeUnit.MILLISECONDS);
-
+//  AsyncManager.me().execute(AsyncFactory.recordOper(operLog));
 //        }
 
 
@@ -155,7 +155,7 @@ public class LogAspect
         }
     }
 
-        protected       ScheduledExecutorService scheduledExecutorService()
+        protected  ScheduledExecutorService scheduledExecutorService()
         {
             return new ScheduledThreadPoolExecutor(10,
                     new BasicThreadFactory.Builder().namingPattern("schedule-pool-%d").daemon(true).build()) {
